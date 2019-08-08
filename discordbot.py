@@ -34,7 +34,7 @@ async def on_ready():
     asyncio.ensure_future(greeting_gm())
 
 async def greeting_gm():
-    await "test".send('おはよう')
+    await message.channel.send("text")
     await asyncio.sleep(10)
 
 client.run(token)
