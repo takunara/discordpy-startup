@@ -25,7 +25,7 @@ import discord
 from discord.ext import tasks
 
 TOKEN = os.environ['DISCORD_BOT_TOKEN']
-CHANNEL_ID = "608987805447880714"
+CHANNEL_ID = 608987805447880714
 
 # 接続に必要なオブジェクトを生成
 client = discord.Client()
