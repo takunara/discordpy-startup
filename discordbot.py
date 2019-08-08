@@ -19,22 +19,31 @@ async def ping(ctx):
 
 bot.run(token)
 """
-import os
+# インストールした discord.py を読み込む
 import discord
-import asyncio
+import os
 
+# 自分のBotのアクセストークンに置き換えてください
+TOKEN = os.environ['DISCORD_BOT_TOKEN']
 
-token = os.environ['DISCORD_BOT_TOKEN']
-
-
+# 接続に必要なオブジェクトを生成
 client = discord.Client()
 
+# 起動時に動作する処理
 @client.event
 async def on_ready():
-    asyncio.ensure_future(greeting_gm())
+    # 起動したらターミナルにログイン通知が表示される
+    print('ログインしました')
 
-async def greeting_gm():
-    await message.channel.send("text")
-    await asyncio.sleep(10)
+# メッセージ受信時に動作する処理
+@client.event
+async def on_message(message):
+    # メッセージ送信者がBotだった場合は無視する
+    if message.author.bot:
+        return
+    # 「/neko」と発言したら「にゃーん」が返る処理
+    if message.content == '/neko':
+        await message.channel.send('にゃーん')
 
-client.run(token)
+# Botの起動とDiscordサーバーへの接続
+client.run(TOKEN)
