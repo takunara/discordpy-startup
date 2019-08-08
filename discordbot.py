@@ -1,18 +1,23 @@
-from discord.ext import commands
-import os
-import traceback
-import time
-from time import sleep
-import threading
+#coding:UTF-8
+import discord
+from discord.ext import tasks
+from datetime import datetime 
 
-bot = discord.Client() # 接続に使用するオブジェクト
-token = os.environ['DISCORD_BOT_TOKEN']
+TOKEN = "DISCORD_BOT_TOKEN" #トークン
+CHANNEL_ID = "20分模写" #チャンネルID
+# 接続に必要なオブジェクトを生成
+client = discord.Client()
 
-@bot.event
-async def on_ready():
-    while True:
-        channel = client.get_channel('20分模写')
-        await bot.send_message(channel, 'おはよう')
-        time.sleep(10)
+# 60秒に一回ループ
+@tasks.loop(seconds=60)
+async def loop():
+    # 現在の時刻
+    now = datetime.now().strftime('%H:%M')
+    if now == '22:58':
+        channel = client.get_channel(CHANNEL_ID)
+        await channel.send('おはよう')  
 
-bot.run(token)
+#ループ処理実行
+loop.start()
+# Botの起動とDiscordサーバーへの接続
+client.run(TOKEN)
