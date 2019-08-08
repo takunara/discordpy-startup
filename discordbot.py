@@ -3,7 +3,7 @@ import discord
 from discord.ext import tasks
 from datetime import datetime 
 
-TOKEN = "DISCORD_BOT_TOKEN" #トークン
+TOKEN = "NjA4OTg4NTI3NTUxNTc4MTEz.XUwpmg.EB-JBX9LH_qoQj1mv6TzvfBbyFM" #トークン
 CHANNEL_ID = "20分模写" #チャンネルID
 # 接続に必要なオブジェクトを生成
 client = discord.Client()
