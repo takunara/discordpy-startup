@@ -24,10 +24,8 @@ import os
 import discord
 from discord.ext import tasks
 
-TOKEN = os.environ['DISCORD_BOT_TOKEN']
-CHANNEL_ID = 608987805447880714
-
-# 接続に必要なオブジェクトを生成
+TOKEN = 'NjA4OTg4NTI3NTUxNTc4MTEz.XUydOg.a7CtQoSEyRXsMTlwV0hlRl4AAJk'
+CHANNEL_ID = 608981862735675423
 client = discord.Client()
 
 # 60秒に一回ループ
