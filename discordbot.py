@@ -1,3 +1,4 @@
+"""
 from discord.ext import commands
 import os
 import traceback
@@ -17,3 +18,23 @@ async def ping(ctx):
 
 
 bot.run(token)
+"""
+import os
+import discord
+import asyncio
+
+
+token = os.environ['DISCORD_BOT_TOKEN']
+
+
+client = discord.Client()
+
+@client.event
+async def on_ready():
+    asyncio.ensure_future(greeting_gm())
+
+async def greeting_gm():
+    await client.send_message(channel, 'おはよう')
+    await asyncio.sleep(10)
+
+client.run(token)
