@@ -1,4 +1,3 @@
-"""
 from discord.ext import commands
 import os
 import traceback
@@ -19,16 +18,3 @@ async def ping(ctx):
     
 
 bot.run(token)
-"""
-
-import threading
-import discord
-client = discord.Client()
-
-@client.event
-async def on_ready():
-    while True:
-        await client.send_message(channel, 'おはよう')
-        time.sleep(10)
-
-client.run(token)
