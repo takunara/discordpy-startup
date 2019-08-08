@@ -18,12 +18,12 @@ async def on_command_error(ctx, error):
 @bot.command()
 async def ping(ctx):
     await ctx.send('pong')
-async def on_ready():
-    while True:
-        if time.strftime('%H:%M',time.localtime())=='22:26':
-            channel = client.get_channel('20分模写')
-            await client.send_message(channel, '勝手に喋るよ')
-            sleep(60)
+#async def on_ready():
+#    while True:
+#        if time.strftime('%H:%M',time.localtime())=='22:26':
+#            channel = client.get_channel('20分模写')
+#            await client.send_message(channel, '勝手に喋るよ')
+#            sleep(60)
 #------------------------------    
 
 #@bot.event
