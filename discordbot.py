@@ -24,7 +24,7 @@ import os
 import discord
 from discord.ext import tasks
 
-TOKEN = 'NjA4OTg4NTI3NTUxNTc4MTEz.XUydOg.a7CtQoSEyRXsMTlwV0hlRl4AAJk'
+TOKEN = os.environ['DISCORD_BOT_TOKEN']
 CHANNEL_ID = 608981862735675423
 client = discord.Client()
 
