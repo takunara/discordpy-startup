@@ -1,23 +1,27 @@
-#coding:UTF-8
+# インストールした discord.py を読み込む
 import discord
-from discord.ext import tasks
-from datetime import datetime 
 
-TOKEN = "NjA4OTg4NTI3NTUxNTc4MTEz.XUwpmg.EB-JBX9LH_qoQj1mv6TzvfBbyFM" #トークン
-CHANNEL_ID = "20分模写" #チャンネルID
+# 自分のBotのアクセストークンに置き換えてください
+TOKEN = 'NjA4OTg4NTI3NTUxNTc4MTEz.XUwpmg.EB-JBX9LH_qoQj1mv6TzvfBbyFM'
+
 # 接続に必要なオブジェクトを生成
 client = discord.Client()
 
-# 60秒に一回ループ
-@tasks.loop(seconds=60)
-async def loop():
-    # 現在の時刻
-    now = datetime.now().strftime('%H:%M')
-    if now == '22:58':
-        channel = client.get_channel(CHANNEL_ID)
-        await channel.send('おはよう')  
+# 起動時に動作する処理
+@client.event
+async def on_ready():
+    # 起動したらターミナルにログイン通知が表示される
+    print('ログインしました')
 
-#ループ処理実行
-loop.start()
+# メッセージ受信時に動作する処理
+@client.event
+async def on_message(message):
+    # メッセージ送信者がBotだった場合は無視する
+    if message.author.bot:
+        return
+    # 「/neko」と発言したら「にゃーん」が返る処理
+    if message.content == '/neko':
+        await message.channel.send('にゃーん')
+
 # Botの起動とDiscordサーバーへの接続
 client.run(TOKEN)
